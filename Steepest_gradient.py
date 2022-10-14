@@ -36,4 +36,6 @@ while np.linalg.norm(calculate_gradient(x)) > 1.0e-5:
 
     x = x + step_length * direction
 
+# return final results
 print(x)
+
