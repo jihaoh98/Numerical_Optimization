@@ -26,16 +26,20 @@ def calculate_gradient(input_data):
 n = 8
 c = 0.5
 step_length = 1.0
-x_initial = np.array([1.5 for i in range(n)])
+x_initial = np.array([2.0 for i in range(n)])
 
 x = x_initial.copy()
+count = 0
 while np.linalg.norm(calculate_gradient(x)) > 1.0e-5:
     direction = - calculate_gradient(x)
     while Rosenbrock_function(x + step_length * direction) > Rosenbrock_function(x) + c * step_length * np.dot(direction, -direction):
         step_length = step_length / 2
 
+    count = count + 1
     x = x + step_length * direction
 
 # return final result
-print(x)
+print('Initial value: ', x_initial)
+print('Final value: ', x)
+print('Iteration times: ', count)
 
